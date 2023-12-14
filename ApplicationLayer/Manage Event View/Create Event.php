@@ -78,50 +78,40 @@ if(isset($_POST['REQUEST']) && !empty($_FILES["event_poster"]["name"])){
 </head>
 
 <style>
-td {
-	text-align: center; 
-  	vertical-align: middle;
-}
+    #table {
+        width: 80%;
+        margin: auto;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
 
-.center {
-	margin-left: auto;
-	margin-right: auto;
-}
+    #table th,
+    #table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
 
-body {
-  background-color: white;
-}
+    #table th {
+        background-color: #337ab7;
+        color: white;
+        font-weight: bold;
+    }
 
-/* form */
-#frm{
-	text-align: center;
-	border: solid grey 1px;
-	width: 95%;
-	height: 100%;
-	border-radius: 5px;
-	margin: 25px auto;
-	background: white;
-	padding: 50px;
-}
+    #table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
 
-/* button */
-#btn{
-	font-weight: normal;
-	color: #fff;
-	background: #337ab7;
-	padding: 5px 20px;
-	width: 100%;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-}
+    #table a {
+        text-decoration: none;
+        color: #33title7ab7;
+    }
 
-/* table */
-#table{
-	text-align: left;
-	margin-left: auto;
-  	margin-right: auto;
-}
+    #table img {
+        width: 100px;
+        height: 35px;
+        border: none;
+    }
 </style>
 
 <body>
@@ -131,56 +121,54 @@ body {
 		<form action="" method="POST" enctype="multipart/form-data">
 			
 			<table id="table">
-				<p>
+				
 				<tr><th>
-					<label>EVENT NAME:</label></th><th>
-					<input type="text" id="event_name" name="event_name"	required></th></tr>
-				</p>
-				<p>
-				<tr><th>
-					<label>EVENT VENUE:</label></th><th>
-					<input type="text" id="event_venue" name="event_venue"	required></th></tr>
-				</p>
-				<p>
-				<tr><th>
-					<label>EVENT START DATE:</label></th><th>
-					<input type="date" id="event_start_date" name="event_start_date" required></th></tr>
-				</p>			
-				<p>
-				<tr><th>
-					<label>EVENT END DATE:</label></th><th>
-					<input type="date" id="event_end_date" name="event_end_date" 	required></th></tr>
-				</p>				
-				<p>
-				<tr><th>
-					<label >EVENT BEGIN TIME:</label></th><th>
-					<input type="time" id="event_begin_time" name="event_begin_time"	required></th></tr>
-				</p>
-				<p>
-				<tr><th>
-					<label >EVENT END TIME:</label></th><th>
-					<input type="time" id="event_end_time" name="event_end_time"	required></th></tr>
-				</p>			
-				<p>
-				<tr><th>
-					<label>EVENT DETAIL:</label></th><th>
-					<input type="text" id="event_detail" name="event_detail"	required></th></tr>
-				</p>
-				<p>
-				<tr><th>
-					<label>EVENT POSTER:</label></th><th>
-					<input type="file" name="event_poster" required></th>
+					<label>EVENT NAME:</label></th><td>
+					<textarea id="event_name" name="event_name" required></textarea></td>
 				</tr>
-				</p>
-				<p>
+				
 				<tr><th>
-					<label>EVENT BROCHURE:</label></th><th>
-					<input type="file" name="event_brochure" required></th>
+					<label>EVENT VENUE:</label></th><td>
+					<input type="text" id="event_venue" name="event_venue"	required></td>
 				</tr>
-				</p>
-				<p>
+				
 				<tr><th>
-					<label for="event_category">EVENT CATEGORY:</label></th><th>
+					<label>EVENT START DATE:</label></th><td>
+					<input type="date" id="event_start_date" name="event_start_date" required></td>
+				</tr>		
+				
+				<tr><th>
+					<label>EVENT END DATE:</label></th><td>
+					<input type="date" id="event_end_date" name="event_end_date" 	required></td>
+				</tr>		
+				
+				<tr><th>
+					<label >EVENT BEGIN TIME:</label></th><td>
+					<input type="time" id="event_begin_time" name="event_begin_time"	required></td>
+				</tr>
+				
+				<tr><th>
+					<label >EVENT END TIME:</label></th><td>
+					<input type="time" id="event_end_time" name="event_end_time"	required></td>
+				</tr>
+				
+				<tr><th>
+					<label>EVENT DETAIL:</label></th><td>
+					<textarea id="event_detail" name="event_detail" required></textarea></td>
+				</tr>
+								
+				<tr><th>
+					<label>EVENT POSTER:</label></th><td>
+					<input type="file" name="event_poster" required></td>
+				</tr>
+				
+				<tr><th>
+					<label>EVENT BROCHURE:</label></th><td>
+					<input type="file" name="event_brochure" required></td>
+				</tr>
+				
+				<tr><th>
+					<label for="event_category">EVENT CATEGORY:</label></th><td>
 						<select name="event_category" id="event_category">
 							<option value="sports">Sports</option>
 							<option value="conferences">Conferences</option>
@@ -190,19 +178,19 @@ body {
 							<option value="arts">Arts</option>
 							<option value="community">Community</option>
 							<option value="other">Other</option>
-						</select></th></tr>
-				</p>
+						</select></td></tr>
+				
 			</table>
-			<p>	
+				
 				<table id="table">
 					<tr>
-					<th><input type="button" id="btn" name="CANCEL" value="CANCEL" 
+					<td><input type="button" id="btn" name="CANCEL" value="CANCEL" 
 					onclick="location.href='../../ApplicationLayer/Manage Event View/Event Organizer Homepage.php'">
-					</th>
-					<th><input type="submit" id="btn" name="REQUEST" value="REQUEST" /></th>
-					</tr>
+					</td>
+					<td><input type="submit" id="btn" name="REQUEST" value="REQUEST" /></th>
+					</td>
 				</table>
-			</p>
+			
 		</form>
 	</div>
 </div>

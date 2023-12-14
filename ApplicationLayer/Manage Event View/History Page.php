@@ -46,35 +46,44 @@ if(isset($_POST['Search'])){
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
 <style>
-  #table{
-	text-align: left;
-	margin-left: auto;
-  margin-right: auto;
-  width: 95%;
-  color: black;
-  background-color: #B4CFEC;
+  #table {
+      width: 80%;
+      margin: auto;
+      border-collapse: collapse;
+      margin-top: 20px;
   }
 
-  table.center {
-  margin-left: auto;
-  margin-right: auto;
-}
+  #table th,
+  #table td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+  }
 
-table, th, td {
-  border: 1px solid black;
-}
+  #table th {
+      background-color: #337ab7;
+      color: white;
+      font-weight: bold;
+  }
 
-#btn{
-	font-weight: normal;
-	color: #fff;
-	background: #337ab7;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-}
+  #table tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
 
+  #table a {
+      text-decoration: none;
+      color: #33title7ab7;
+  }
+
+  #table img {
+      width: 100px;
+      height: 35px;
+      border: none;
+  }
 </style>
+
 </head>
 <body>
 <section>

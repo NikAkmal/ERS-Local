@@ -16,8 +16,7 @@
         <a href="../../ApplicationLayer/Manage Event View/Create Event.php">CREATE EVENT</a>
         <a href="../../ApplicationLayer/Manage Event View/Report Page.php">REPORT</a>
         <a href="../../ApplicationLayer/Manage Account View/Account Information Page.php">ACCOUNT INFORMATION</a>
-        <a <input type="button" id="btn" name="LOGOUT" value="LOGOUT" 
-        onclick="location.href='../../ApplicationLayer/Manage Login and Registration View/Login.php'">LOGOUT</a>
+        <a href="../../ApplicationLayer/Manage Login and Registration View/Login.php">LOGOUT</a>
       </div>
    </div>
 

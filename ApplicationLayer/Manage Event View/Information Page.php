@@ -76,100 +76,90 @@ if(isset($_POST['QRCODE'])){
 </head>
 
 <style>
-td {
-	text-align: center; 
-  	vertical-align: middle;
-}
+    #table {
+        width: 80%;
+        margin: auto;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
 
-.center {
-	margin-left: auto;
-	margin-right: auto;
-}
+    #table th,
+    #table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
 
-body {
-  background-color: white;
-}
+    #table th {
+        background-color: #337ab7;
+        color: white;
+        font-weight: bold;
+    }
 
-/* form */
-#frm{
-	text-align: center;
-	border: solid grey 1px;
-	width: 95%;
-	height: 100%;
-	border-radius: 5px;
-	margin: 25px auto;
-	background: white;
-	padding: 50px;
-}
+    #table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
 
-/* button */
-#btn{
-	font-weight: normal;
-	color: #fff;
-	background: #337ab7;
-	padding: 5px 20px;
-	width: 100%;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-}
+    #table a {
+        text-decoration: none;
+        color: #33title7ab7;
+    }
 
-/* table */
-#table{
-	text-align: left;
-	margin-left: auto;
-  	margin-right: auto;
-}
+    #table img {
+        width: 100px;
+        height: 35px;
+        border: none;
+    }
 </style>
 
 <body>
 	<div>
-	<h2 style="text-align: left;" >EVENT INFORMATION:</h2>
+	<h2 style="text-align: center;" >EVENT INFORMATION:</h2>
 	<div id="frm">	
 		<form action="" method="POST" enctype="multipart/form-data">
 				<?php	foreach ($data as $row){	
 				$_SESSION['event_qr_code'] = $row['event_qr_code'];	
 				$event_request_status = $row['event_request_status'];	
 				if($account_type=="organizer"){?>
-					<table id="table">
-				<p>
-				<tr><th>
-					<label>EVENT NAME:</label></th><th>
-					<input type="text" id="event_name" name="event_name" value="<?=$row['event_name'];?>"	/></th></tr>
-				</p>
-				<p>
-				<tr><th>
-					<label>EVENT VENUE:</label></th><th>
-					<input type="text" id="event_venue" name="event_venue" value="<?=$row['event_venue'];?>"	/></th></tr>
-				</p>
-				<p>
-				<tr><th>
-					<label>EVENT START DATE:</label></th><th>
-					<input type="date" id="event_start_date" name="event_start_date" value="<?=$row['event_start_date'];?>"></th></tr>
-				</p>			
-				<p>
-				<tr><th>
-					<label>EVENT END DATE:</label></th><th>
-					<input type="date" id="event_end_date" name="event_end_date" value="<?=$row['event_end_date'];?>"></th></tr>
-				</p>				
-				<p>
-				<tr><th>
-					<label >EVENT BEGIN TIME:</label></th><th>
-					<input type="time" id="event_begin_time" name="event_begin_time" value="<?=$row['event_begin_time'];?>"></th></tr>
-				</p>
-				<p>
-				<tr><th>
-					<label >EVENT END TIME:</label></th><th>
-					<input type="time" id="event_end_time" name="event_end_time" value="<?=$row['event_end_time'];?>"></th></tr>
-				</p>			
-				<p>
-				<tr><th>
-					<label>EVENT DETAIL:</label></th><th>
-					<input type="text" id="event_detail" name="event_detail" value="<?=$row['event_detail'];?>"/></th></tr>
-				</p>
-				<p>
-				<tr><th>
-					<label for="event_category">EVENT CATEGORY:</label></th><th>
+				<table id="table">
+				
+				<tr>
+					<th><label>EVENT NAME:</label></th><td>
+					<textarea id="event_name" name="event_name"><?=$row['event_name'];?></textarea></td>
+				</tr>
+								
+				<tr>
+					<th><label>EVENT VENUE:</label></th><td>
+					<input type="text" id="event_venue" name="event_venue" value="<?=$row['event_venue'];?>"	/></td>
+				</tr>
+								
+				<tr>
+					<th><label>EVENT START DATE:</label></th><td>
+					<input type="date" id="event_start_date" name="event_start_date" value="<?=$row['event_start_date'];?>"></td>
+				</tr>	
+				
+				<tr>
+					<th><label>EVENT END DATE:</label></th><td>
+					<input type="date" id="event_end_date" name="event_end_date" value="<?=$row['event_end_date'];?>"></td>
+				</tr>
+								
+				<tr>
+					<th><label >EVENT BEGIN TIME:</label></th><td>
+					<input type="time" id="event_begin_time" name="event_begin_time" value="<?=$row['event_begin_time'];?>"></td>
+				</tr>
+				
+				<tr>
+					<th><label >EVENT END TIME:</label></th><td>
+					<input type="time" id="event_end_time" name="event_end_time" value="<?=$row['event_end_time'];?>"></td>
+				</tr>
+							
+				<tr>
+					<th><label>EVENT DETAIL:</label></th><td>
+					<textarea id="event_detail" name="event_detail"><?=$row['event_detail'];?></textarea></td>
+				</tr>
+				
+				<tr>
+					<th><label for="event_category">EVENT CATEGORY:</label></th><td>
 						<select name="event_category" id="event_category">
 							<option value="<?=$row['event_category'];?>"><?=$row['event_category'];?></option>
 							<option value="sports">Sports</option>
@@ -180,71 +170,80 @@ body {
 							<option value="arts">Arts</option>
 							<option value="community">Community</option>
 							<option value="other">Other</option>
-						</select></th></tr>
-				</p>
+						</select></td></tr>
+				
 			</table>
 
 
 				<?php } else{?>
-					<td><img src="<?=$row['event_poster']?>" style="width: 380px;height: 380px;"></td>
-					<h3 style="text-align: center;" >EVENT TITLE:</h3>		
-					<h2 style="text-align: center;" ><?=$row['event_name']?></h2>		
+					<img src="<?=$row['event_poster']?>" style="width: 380px; height: 380px; display: block; margin-left: auto; margin-right: auto;">
 					<h3 style="text-align: center;" >EVENT INFORMATION:</h3>	
-					<table id="table">					
+					<table id="table">
 						<tr>
-						<td><label>EVENT VENUE:</label></td>
-						<td><label><?=$row['event_venue']?></label></td>
-						</tr><tr>
-						<td><label>EVENT START DATE:</label></td>
-						<td><label><?=$row['event_start_date']?></label></td>
-						</tr><tr>
-						<td><label>EVENT END DATE:</label></td>
-						<td><label><?=$row['event_end_date']?></label></td>
-						</tr><tr>
-						<td><label>EVENT BEGIN TIME:</label></td>
-						<td><label><?=$row['event_begin_time']?></label></td>
-						</tr><tr>
-						<td><label>EVENT END TIME:</label></td>
-						<td><label><?=$row['event_end_time']?></label></td>
-						</tr><tr>
-						<td><label>EVENT DETAIL:</label></td>
-						<td><label><?=$row['event_detail']?></label></td>
-						</tr><tr>
-						<td><label>EVENT CATEGORY:</label></td>
-						<td><label><?=$row['event_category']?></label></td>
+							<th>EVENT TITLE</th>
+							<td><?=$row['event_name']?></td>
 						</tr>
-						
 						<tr>
-						<td><label>EVENT BROCHURE:</label></td>					
-						<td>
-							<a href="<?=$row['event_brochure']?>" download="<?=$row['event_name']?>">
-							<img src="/Event Registration System/Images/Event Brochure/Download-Button-Transparent-Background-PNG.png" width="150px" height="50px" />
-							</a></td>
+							<th>EVENT VENUE</th>
+							<td><?=$row['event_venue']?></td>
 						</tr>
-				</table>
+						<tr>
+							<th>EVENT START DATE</th>
+							<td><?=$row['event_start_date']?></td>
+						</tr>
+						<tr>
+							<th>EVENT END DATE</th>
+							<td><?=$row['event_end_date']?></td>
+						</tr>
+						<tr>
+							<th>EVENT BEGIN TIME</th>
+							<td><?=$row['event_begin_time']?></td>
+						</tr>
+						<tr>
+							<th>EVENT END TIME</th>
+							<td><?=$row['event_end_time']?></td>
+						</tr>
+						<tr>
+							<th>EVENT DETAIL</th>
+							<td><?=$row['event_detail']?></td>
+						</tr>
+						<tr>
+							<th>EVENT CATEGORY</th>
+							<td><?=$row['event_category']?></td>
+						</tr>
+						<tr>
+							<th>EVENT BROCHURE</th>
+							<td>
+								<a href="<?=$row['event_brochure']?>" download="<?=$row['event_name']?>">
+									<img src="/Event Registration System/Images/Event Brochure/Download-Button-Transparent-Background-PNG.png" alt="Download" />
+								</a>
+							</td>
+						</tr>
+					</table>
+
 			<?php	}}	?>
-			<p>	
+				
 				<table id="table">
 				<?php	if($account_type=="participant"){	?>
 					<tr>
-					<th><input type="submit" id="btn" name="REGISTER" value="REGISTER" /></th>
+					<td><input type="submit" id="btn" name="REGISTER" value="REGISTER" /></td>
 					</tr>
 				<?php	}	else{	if($account_type=="organizer"){	?>
 						<tr>	
-						<th><input type="submit" id="btn" name="UPDATE" value="UPDATE" /></th>
-						<th><input type="submit" id="btn" name="QRCODE" value="GENERATE QR CODE" /></th>
+						<td><input type="submit" id="btn" name="UPDATE" value="UPDATE" /></td>
+						<td><input type="submit" id="btn" name="QRCODE" value="GENERATE QR CODE" /></td>
 						</tr>
 				<?php	}	else{	if($account_type=="admin"){	
 						if(($event_request_status=="Pending") || ($event_request_status=="DISAPPROVE")) {	?>
 							<tr>	
-							<th><input type="submit" id="btn" name="DISAPPROVE" value="DISAPPROVE" /></th>
-							<th><input type="submit" id="btn" name="APPROVE" value="APPROVE" /></th>
+							<td><input type="submit" id="btn" name="DISAPPROVE" value="DISAPPROVE" /></td>
+							<td><input type="submit" id="btn" name="APPROVE" value="APPROVE" /></td>
 							</tr>
 
 				<?php	}}	else{	header("Location:../../ApplicationLayer/Manage Login and Registration View/Login.php");		}}}?>
 				</table>
 
-			</p>
+			
 		</form>
 	</div>
 </div>

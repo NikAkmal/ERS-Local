@@ -75,14 +75,40 @@ if(isset($_POST['INFORMATION'])){
   	margin-right: auto;
 }
 
-#table2{
-	border: 1px solid black;
-	text-align: center;
-	width: 95%;
-	margin-left: auto; 
-  	margin-right: auto;
-	background-color: #B4CFEC;
-}
+#table2 {
+      width: 80%;
+      margin: auto;
+      border-collapse: collapse;
+      margin-top: 20px;
+  }
+
+  #table2 th,
+  #table2 td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+  }
+
+  #table2 th {
+      background-color: #337ab7;
+      color: white;
+      font-weight: bold;
+  }
+
+  #table2 tr:nth-child(even) {
+      background-color: #f2f2f2;
+  }
+
+  #table2 a {
+      text-decoration: none;
+      color: #33title7ab7;
+  }
+
+  #table2 img {
+      width: 100px;
+      height: 35px;
+      border: none;
+  }
 
 #line{
 	border: 1px solid black;
@@ -113,7 +139,7 @@ if(isset($_POST['INFORMATION'])){
 			<table id="table">
 			<tr>
 				<th style="text-align: center;">
-					<label for="report_select">SELECT REPORT:</label>
+					<label for="report_select">SELECT REPORT : </label>
 						<select name="report_select" id="report_select">
 							<option value="empty">...</option>
 							<option value="1">Participated List</option>
@@ -124,7 +150,7 @@ if(isset($_POST['INFORMATION'])){
 			<tr>
 				<th style="text-align: center;">
 					<!-- All event that the event organizer created should be display here -->
-					<label for="event_id">SELECT EVENT:</label>
+					<label for="event_id">SELECT EVENT : </label>
 						<select name="event_id" id="event_id">
 							<option value="empty">...</option>
 							<?php

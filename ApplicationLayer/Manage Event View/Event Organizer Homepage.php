@@ -48,7 +48,7 @@ if(isset($_POST['Search'])){
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-<style>
+    <style>
   /* Image Slide Show */
   * {box-sizing: border-box}
   body {font-family: Verdana, sans-serif; margin:0}
@@ -150,32 +150,49 @@ if(isset($_POST['Search'])){
     .prev, .next,.text {font-size: 11px}
   }
 
-  #table{
-	text-align: left;
-	margin-left: auto;
-  margin-right: auto;
-  width: 95%;
-  color: black;
-  background-color: #B4CFEC;
+  #table {
+        width: 80%;
+        margin: auto;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    #table th,
+    #table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    #table th {
+        background-color: #337ab7;
+        color: white;
+        font-weight: bold;
+    }
+
+    #table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #table a {
+        text-decoration: none;
+        color: #33title7ab7;
+    }
+
+    #table img {
+        width: 100px;
+        height: 35px;
+        border: none;
+    }
+
+  #btn{
+    font-weight: normal;
+    color: #fff;
+    background: #337ab7;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
   }
-
-  table.center {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-table, th, td {
-  border: 1px solid black;
-}
-
-#btn{
-	font-weight: normal;
-	color: #fff;
-	background: #337ab7;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-}
 
 </style>
 </head>
@@ -184,19 +201,19 @@ table, th, td {
 <div>
   <div class="slideshow-container">
 
-  <div class="mySlides fade">
+  <div class="mySlides fade" style="text-align: center;">
     <div class="numbertext">1 / 3</div>
-    <img src="http://www.villadicapo.com/wp-content/uploads/2017/08/event-management2.jpg" style="width:100%">
+    <img src="https://www.searchenginejournal.com/wp-content/uploads/2021/02/event-structured-data-6017c10a34361-1520x800.webp" style="width:78%">
     <div class="text">Event Registration System</div>
-  </div>
+</div>
 
-  <div class="mySlides fade">
+<div class="mySlides fade" style="text-align: center;">
     <div class="numbertext">2 / 3</div>
-    <img src="https://www.retaildetail.eu/sites/default/files/styles/landingspage_caroussel_image/public/Grote%20foto%20bovenaan_1.JPG?itok=-0LRChpv" style="width:100%">
+    <img src="https://cdn.socio.events/spai/q_glossy+w_966+to_avif+ret_img/socio.events/wp-content/uploads/2022/10/AdobeStock_503243650-2048x1184.jpeg" style="width: 71%">
     <div class="text">Event Registration System</div>
   </div>
 
-  <div class="mySlides fade">
+  <div class="mySlides fade" style="text-align: center;">
     <div class="numbertext">3 / 3</div>
     <img src="https://cdn.searchenginejournal.com/wp-content/uploads/2016/04/shutterstock_217119211-760x312.jpg" style="width:100%">
     <div class="text">Event Registration System</div>
@@ -238,13 +255,14 @@ function showSlides() {
 </div>
 
 <section>
+
 <form method="POST" action="" style="text-align: center;">
-<div class="form-row">
+  <div class="form-row">
     <div class="col">
       <label>EVENT CREATED:</label>
     </div>
-    <div class="col" >
-    <label for="event_category" >Search Category: </label>
+    <div class="col">
+      <label for="event_category">Filter Category:</label>
       <select name="event_category" id="event_category">
         <option value="all"></option>
         <option value="all">All</option>
@@ -260,36 +278,33 @@ function showSlides() {
       <input type="submit" id="btn" name="Search" value="Search" />
     </div>
   </div>
-</form>								
-<form method= "post" action="../../ApplicationLayer/Manage Event View/Information Page.php">
-  <div>
-  <table id="table" class="center">
-    <tr>
-    <th style="text-align: center;"><label>EVENT NAME</label></th>
-    <th style="text-align: center;"><label>START DATE</label></th>
-    <th style="text-align: center;"><label>END DATE</label></th>
-    <th style="text-align: center;"><label>APPROVAL STATUS</label></th>
-    <th><label></label></th>
-    </tr>									
-    <?php
-      foreach ($data as $row) {
-    ?>
-    <tr>
-    <td><label><?=$row['event_name']?></label></td>
-    <td style="text-align: center;"><label><?=$row['event_start_date']?></label></td>
-    <td style="text-align: center;"><label><?=$row['event_end_date']?></label></td>
-    <td style="text-align: center;"><label><?=$row['event_request_status']?></label></td>
-    <td style="text-align: center;">
-      <input id="btn" type="button" class="primary" onclick="location.href='../../ApplicationLayer/Manage Event View/Information Page.php?event_id=<?=$row['event_id']?>'"  value="INFORMATION">&nbsp</li>
-    </td>
-    </tr>
-    <?php
-      }
-    ?>										
-  </td>									
-</table>
-</div>
 </form>
+
+<form method="post" action="../../ApplicationLayer/Manage Event View/Information Page.php" id="table-container">
+  <div>
+    <table id="table">
+      <tr>
+        <th><label>EVENT NAME</label></th>
+        <th><label>START DATE</label></th>
+        <th><label>END DATE</label></th>
+        <th><label>APPROVAL STATUS</label></th>
+        <th></th>
+      </tr>
+      <?php foreach ($data as $row) { ?>
+        <tr>
+          <td><?= $row['event_name'] ?></td>
+          <td><?= $row['event_start_date'] ?></td>
+          <td><?= $row['event_end_date'] ?></td>
+          <td><?= $row['event_request_status'] ?></td>
+          <td>
+            <input id="btn" type="button" class="primary" onclick="location.href='../../ApplicationLayer/Manage Event View/Information Page.php?event_id=<?= $row['event_id'] ?>'" value="INFORMATION">
+          </td>
+        </tr>
+      <?php } ?>
+    </table>
+  </div>
+</form>
+
 </section>
 
 </body>

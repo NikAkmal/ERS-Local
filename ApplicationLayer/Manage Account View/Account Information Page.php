@@ -111,19 +111,6 @@ if(isset($_POST['BLACKLIST'])){
 </head>
 
 <style>
-td {
-	text-align: center; 
-  	vertical-align: middle;
-}
-
-.center {
-	margin-left: auto;
-	margin-right: auto;
-}
-
-body {
-  background-color: white;
-}
 
 /* form */
 #frm{
@@ -150,11 +137,40 @@ body {
 }
 
 /* table */
-#table{
-	text-align: left;
-	margin-left: auto;
-  	margin-right: auto;
-}
+#table {
+        width: 80%;
+        margin: auto;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    #table th,
+    #table td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    #table th {
+        background-color: #337ab7;
+        color: white;
+        font-weight: bold;
+    }
+
+    #table tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #table a {
+        text-decoration: none;
+        color: #33title7ab7;
+    }
+
+    #table img {
+        width: 100px;
+        height: 35px;
+        border: none;
+    }
 </style>
 
 <body>
@@ -171,180 +187,196 @@ body {
 						//Reset
 						$_SESSION['information'] = 0;
 					?>
-						<td><img src="<?=$row['participant_profile_picture']?>" style="width: 380px;height: 380px;"></td>
+						<th style="text-align: center;">
+						<img src="<?=$row['participant_profile_picture']?>" style="width: 250px; height: 250px; border-radius: 50%;">
+						</th>
+
 						<table id="table">					
 							<tr>
-							<td><label>NAME:</label></td>
+							<th><label>NAME:</label></th>
 							<td><label><?=$row['participant_name']?></label></td>
-							</tr><tr>
-							<td><label>USERNAME:</label></td>
+							</tr>
+							<tr>
+							<th><label>USERNAME:</label></th>
 							<td><label><?=$row['participant_username']?></label></td>
 							</tr><tr>
-							<td><label>PHONE NUMBER:</label></td>
+							<th><label>PHONE NUMBER:</label></th>
 							<td><label><?=$row['participant_phone_number']?></label></td>
 							</tr><tr>
-							<td><label>MATRIC ID:</label></td>
+							<th><label>MATRIC ID:</label></th>
 							<td><label><?=$row['participant_matric_id']?></label></td>
 							</tr><tr>
-							<td><label>ADDRESS:</label></td>
+							<th><label>ADDRESS:</label></th>
 							<td><label><?=$row['participant_address']?></label></td>
 							</tr><tr>
-							<td><label>ACCOUNT TYPE:</label></td>
+							<th><label>ACCOUNT TYPE:</label></th>
 							<td><label><?=$row['account_type']?></label></td>
 							</tr>
 						</table>
 					<?php } 
 					else { ?>
-						<td><img src="<?=$row['event_organizer_profile_picture']?>" style="width: 380px;height: 380px;"></td>
+						<th style="text-align: center;">
+						<img src="<?=$row['event_organizer_profile_picture']?>" style="width: 250px; height: 250px; border-radius: 50%;">
+						</th>
+
 						<table id="table">
-						<p>
+						
 						<tr><th>
-							<label>NAME:</label></th><th>
-							<input type="text" id="event_organizer_name" name="event_organizer_name" value="<?=$row['event_organizer_name'];?>"	/></th></tr>
-						</p>
-						<p>
+							<label>NAME:</label></th><td>
+							<textarea id="event_organizer_name" name="event_organizer_name"><?=$row['event_organizer_name'];?></textarea>
+						</tr></td>
+						
 						<tr><th>
-							<label>USERNAME:</label></th><th>
-							<input type="text" id="event_organizer_username" name="event_organizer_username" value="<?=$row['event_organizer_username'];?>"	/></th></tr>
-						</p>
-						<p>
+							<label>USERNAME:</label></th><td>
+							<textarea id="event_organizer_username" name="event_organizer_username"><?=$row['event_organizer_username'];?></textarea>
+						</th></td>
+												
 						<tr><th>
-							<label>PASSWORD:</label></th><th>
-							<input type="password" id="event_organizer_password" name="event_organizer_password" value="<?=$row['event_organizer_password'];?>"></th></tr>
-						</p>			
-						<p>
+							<label>PASSWORD:</label></th><td>
+							<input type="password" id="event_organizer_password" name="event_organizer_password" value="<?=$row['event_organizer_password'];?>">
+						</th></td>
+															
 						<tr><th>
-							<label>PHONE NUMBER:</label></th><th>
-							<input type="text" id="event_organizer_phone_number" name="event_organizer_phone_number" value="<?=$row['event_organizer_phone_number'];?>"></th></tr>
-						</p>				
-						<p>
+							<label>PHONE NUMBER:</label></th><td>
+							<textarea id="event_organizer_phone_number" name="event_organizer_phone_number"><?=$row['event_organizer_phone_number'];?></textarea>
+						</th></td>
+										
 						<tr><th>
-							<label >ADDRESS:</label></th><th>
-							<input type="text" id="event_organizer_address" name="event_organizer_address" value="<?=$row['event_organizer_address'];?>"></th></tr>
-						</p>
+							<label >ADDRESS:</label></th><td>
+							<textarea id="event_organizer_address" name="event_organizer_address"><?=$row['event_organizer_address'];?></textarea>
+						</th></td>
+						
 						</table>
-						<p>	
+							
 							<table id="table">
 								<tr>	
-									<th><input type="submit" id="btn" name="EDIT" value="EDIT" /></th>
+									<td><input type="submit" id="btn" name="EDIT" value="EDIT" /></td>
 								</tr>
 							</table>
-						</p>
+						
 				<?php } }
 				//Edit Participant Account Data	
 				if($account_type=="participant"){?>
-					<td><img src="<?=$row['participant_profile_picture']?>" style="width: 380px;height: 380px;"></td>
+					<th style="text-align: center;">
+					<img src="<?=$row['participant_profile_picture']?>" style="width: 250px; height: 250px; border-radius: 50%;">
+					</th>
+
 					<table id="table">
-					<p>
+					
 					<tr><th>
-						<label>NAME:</label></th><th>
-						<input type="text" id="participant_name" name="participant_name" value="<?=$row['participant_name'];?>"	/></th></tr>
-					</p>
-					<p>
+						<label>NAME:</label></th><td>
+						<textarea id="participant_name" name="participant_name"><?=$row['participant_name'];?></textarea>
+					</th></td>
+									
 					<tr><th>
-						<label>USERNAME:</label></th><th>
-						<input type="text" id="participant_username" name="participant_username" value="<?=$row['participant_username'];?>"	/></th></tr>
-					</p>
-					<p>
+						<label>USERNAME:</label></th><td>
+						<textarea id="participant_username" name="participant_username"><?=$row['participant_username'];?></textarea>
+					</th></td>
+										
 					<tr><th>
-						<label>PASSWORD:</label></th><th>
-						<input type="password" id="participant_password" name="participant_password" value="<?=$row['participant_password'];?>"></th></tr>
-					</p>			
-					<p>
+						<label>PASSWORD:</label></th><td>
+						<input type="password" id="participant_password" name="participant_password" value="<?=$row['participant_password'];?>">
+					</th></td>
+													
 					<tr><th>
-						<label>PHONE NUMBER:</label></th><th>
-						<input type="text" id="participant_phone_number" name="participant_phone_number" value="<?=$row['participant_phone_number'];?>"></th></tr>
-					</p>
-					<p>
+						<label>PHONE NUMBER:</label></th><td>
+						<textarea id="participant_phone_number" name="participant_phone_number"><?=$row['participant_phone_number'];?></textarea>
+					</th></td>
+										
 					<tr><th>
-						<label >MATRIC ID:</label></th><th>
-						<input type="text" id="participant_matric_id" name="participant_matric_id" value="<?=$row['participant_matric_id'];?>"></th></tr>
-					</p>				
-					<p>
+						<label >MATRIC ID:</label></th><td>
+						<textarea id="participant_matric_id" name="participant_matric_id"><?=$row['participant_matric_id'];?></textarea>
+					</th></td>
+											
 					<tr><th>
-						<label >ADDRESS:</label></th><th>
-						<input type="text" id="participant_address" name="participant_address" value="<?=$row['participant_address'];?>"></th></tr>
-					</p>
+						<label >ADDRESS:</label></th><td>
+						<textarea id="participant_address" name="participant_address"><?=$row['participant_address'];?></textarea>
+					</th></td>
+					
 					</table>
-					<p>	
+						
 						<table id="table">
 							<tr>	
-								<th><input type="submit" id="btn" name="EDIT" value="EDIT" /></th>
+								<td><input type="submit" id="btn" name="EDIT" value="EDIT" /></td>
 							</tr>
 						</table>
-					</p>
+					
 				<?php } 
 
 				//Admin view Organizer Account Data
 				if($user_catergory=="organizer"){?>
-					<td><img src="<?=$row['event_organizer_profile_picture']?>" style="width: 380px;height: 380px;"></td>
+					<th style="text-align: center;">
+					<img src="<?=$row['event_organizer_profile_picture']?>" style="width: 250px; height: 250px; border-radius: 50%;">
+					</th>
 					<table id="table">					
 						<tr>
-						<td><label>NAME:</label></td>
+						<th><label>NAME:</label></th>
 						<td><label><?=$row['event_organizer_name']?></label></td>
 						</tr><tr>
-						<td><label>USERNAME:</label></td>
+						<th><label>USERNAME:</label></th>
 						<td><label><?=$row['event_organizer_username']?></label></td>
 						</tr><tr>
-						<td><label>PHONE NUMBER:</label></td>
+						<th><label>PHONE NUMBER:</label></th>
 						<td><label><?=$row['event_organizer_phone_number']?></label></td>
 						</tr><tr>
-						<td><label>ADDRESS:</label></td>
+						<th><label>ADDRESS:</label></th>
 						<td><label><?=$row['event_organizer_address']?></label></td>
 						</tr><tr>
-						<td><label>ACCOUNT TYPE:</label></td>
+						<th><label>ACCOUNT TYPE:</label></th>
 						<td><label><?=$row['account_type']?></label></td>
 						</tr>
-						<td><label>ACCOUNT STATUS:</label></td>
+						<th><label>ACCOUNT STATUS:</label></th>
 						<td><label><?=$row['event_organizer_account_status']?></label></td>
 						</tr>
 				</table>
-				<p>	
+					
 					<table id="table">
 						<tr>	
-							<th><input type="submit" id="btn" name="UNBLACKLIST" value="UNBLACKLIST" /></th>
-							<th><input type="submit" id="btn" name="BLACKLIST" value="BLACKLIST" /></th>
+							<td><input type="submit" id="btn" name="UNBLACKLIST" value="UNBLACKLIST" /></td>
+							<td><input type="submit" id="btn" name="BLACKLIST" value="BLACKLIST" /></td>
 						</tr>
 					</table>
-				</p>
+				
 				
 				<?php } 
 
 				//Admin view Participant Account Data
 				if($user_catergory=="participant"){?>
-					<td><img src="<?=$row['participant_profile_picture']?>" style="width: 380px;height: 380px;"></td>
+					<th style="text-align: center;">
+					<img src="<?=$row['participant_profile_picture']?>" style="width: 250px; height: 250px; border-radius: 50%;">
+					</th>
 					<table id="table">					
 						<tr>
-						<td><label>NAME:</label></td>
+						<th><label>NAME:</label></th>
 						<td><label><?=$row['participant_name']?></label></td>
 						</tr><tr>
-						<td><label>USERNAME:</label></td>
+						<th><label>USERNAME:</label></th>
 						<td><label><?=$row['participant_username']?></label></td>
 						</tr><tr>
-						<td><label>PHONE NUMBER:</label></td>
+						<th><label>PHONE NUMBER:</label></th>
 						<td><label><?=$row['participant_phone_number']?></label></td>
 						</tr><tr>
-						<td><label>MATRIC ID:</label></td>
+						<th><label>MATRIC ID:</label></th>
 						<td><label><?=$row['participant_matric_id']?></label></td>
 						</tr><tr>
-						<td><label>ADDRESS:</label></td>
+						<th><label>ADDRESS:</label></th>
 						<td><label><?=$row['participant_address']?></label></td>
 						</tr><tr>
-						<td><label>ACCOUNT TYPE:</label></td>
+						<th><label>ACCOUNT TYPE:</label></th>
 						<td><label><?=$row['account_type']?></label></td>
 						</tr>
-						<td><label>ACCOUNT STATUS:</label></td>
+						<th><label>ACCOUNT STATUS:</label></th>
 						<td><label><?=$row['participant_account_status']?></label></td>
 						</tr>
 				</table>
-				<p>	
+					
 					<table id="table">
 						<tr>	
-							<th><input type="submit" id="btn" name="UNBLACKLIST" value="UNBLACKLIST" /></th>
-							<th><input type="submit" id="btn" name="BLACKLIST" value="BLACKLIST" /></th>
+							<td><input type="submit" id="btn" name="UNBLACKLIST" value="UNBLACKLIST" /></td>
+							<td><input type="submit" id="btn" name="BLACKLIST" value="BLACKLIST" /></td>
 						</tr>
 					</table>
-				</p>
+				
 				
 			<?php	}}	?>
 		</form>
